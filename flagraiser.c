@@ -26,7 +26,6 @@ int typefinder(char s)
 struct flags flagmaker(struct flags flagman, char *fmt, va_list ap)
 {
     int digitsize = 0;
-    int lsize = 0;
     char *opoint;
 
     flagman.minus = -1;

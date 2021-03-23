@@ -28,7 +28,7 @@ int sfinisher(struct flags flagman, char *bullet)
     int size;
     int sizec;
     int target;
-    int bulletsize;
+    int sizebullet = strlen(bullet);
 
     // printf("\n:flags:\n\n");
     // printf("minus %d\n",flagman.minus);
@@ -42,9 +42,9 @@ int sfinisher(struct flags flagman, char *bullet)
     if(flagman.zero == 1 && flagman.minus ==1)
         printf("ERRROR");
     
-    if(flagman.prec == -1 && flagman.field == -1 || flagman.field <= strlen(bullet))
+    if((flagman.prec == -1 && flagman.field == -1) || flagman.field <= sizebullet)
         size = strlen(bullet);
-    else if((flagman.field > strlen(bullet) || flagman.prec < flagman.field) && flagman.field != -1)
+    else if((flagman.field > sizebullet || flagman.prec < flagman.field) && flagman.field != -1)
     {
         size = flagman.field;
     }
@@ -67,8 +67,8 @@ int sfinisher(struct flags flagman, char *bullet)
         size--;
     }
 
-    if(flagman.prec > strlen(bullet))
-        flagman.prec = strlen(bullet);
+    if(flagman.prec > sizebullet)
+        flagman.prec = sizebullet;
 
     if(flagman.minus != -1)
         target =  flagman.prec;

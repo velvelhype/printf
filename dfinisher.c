@@ -18,13 +18,12 @@ int dfinisher(char *bullet, struct flags flagman)
 {
     char *camvas;
     char *zbullet;
-    int iullet = 12345;
     int size;
     int sizec;
-    int ztarget;
     int target;
     int zbulletsize;
     int countpre = flagman.prec;
+    int bulletsize = strlen(bullet);
 
     // printf("\n:flags:\n\n");
     // printf("minus %d\n",flagman.minus);
@@ -38,7 +37,7 @@ int dfinisher(char *bullet, struct flags flagman)
 
 
 
-   if(flagman.prec != -1 && flagman.prec > strlen(bullet))
+   if(flagman.prec != -1 && flagman.prec > bulletsize)
         {
 
             if(!(zbullet = (char*)malloc(sizeof(char) * flagman.prec + 1)))

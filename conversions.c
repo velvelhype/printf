@@ -10,8 +10,7 @@ char *ft_itoa(int d)
     size_t len = 0;
     char *slot;
 
-    size_t ruler = 1;
-    size_t count = 0;
+    int ruler = 1;
 
     if (d == -2147483648)
         return (strdup("-2147483648"));
@@ -43,8 +42,6 @@ char *ft_itoa(int d)
 
 char* dcon(int d)
 {
-    int count = 0;
-    unsigned int dx = 0;
     return(ft_itoa(d));
 }
 
@@ -81,7 +78,6 @@ int hexdigit(int d)
 char *xcon(size_t d, int flag)
 {
     size_t amari = 0;
-    size_t shou = 0;
     size_t len = 0;
     char loc[4] = "0x30";
     char *slot;

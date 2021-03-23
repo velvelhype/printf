@@ -24,8 +24,7 @@ int minprintf(char *fmt, ...)
     va_list ap;
     struct flags flagman = {-1, -1, -1, -1, -1, 0};
     char *bullet;
-    char *p, *sval;
-    char *twinbite;
+    char *p;
     va_start(ap, fmt);
     int howmanywewrite;
 
@@ -108,10 +107,6 @@ int main()
 {
     // minprintf("min_ver:%9d\n",13);
     //    printf("ori_ver:\n%9d\n",13);
-    char stn[200] = "12345";
-    int ssn = 12345;
-    
-
     //minprintf("min%%%10.7d%2.1d%3.2s\n",22244,12,"hage");
     
 
