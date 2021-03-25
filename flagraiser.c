@@ -39,7 +39,6 @@ struct flags flagmaker(struct flags flagman, char *fmt, va_list ap)
     if (*fmt == '-')
     {
         flagman.minus = 1;
-
         fmt++;
     }
     if (*fmt == '0')
@@ -86,10 +85,12 @@ struct flags flagmaker(struct flags flagman, char *fmt, va_list ap)
             flagman.prec = 0;
             digitsize = 0;
             while (typefinder(*(fmt + digitsize)) == 0 && *(fmt + digitsize) != '.')
-                digitsize++;
+                {
+                    flagman.prec = (flagman.prec * 10) + *(fmt + digitsize)  - '0';
+                    digitsize++;
+                }
             while (digitsize > 0)
             {
-                flagman.prec = (flagman.prec * 10 + (*fmt - 48));
                 fmt++;
                 digitsize--;
             }
@@ -97,9 +98,9 @@ struct flags flagmaker(struct flags flagman, char *fmt, va_list ap)
     }
     else
     flagman.prec = -1;
+    
     flagman.type = typefinder(*fmt);
     flagman.flagsize = fmt - opoint;
-
     return flagman;
 }
 

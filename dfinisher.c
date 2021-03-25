@@ -16,14 +16,15 @@ struct flags
 
 int dfinisher(char *bullet, struct flags flagman)
 {
-    char *camvas;
-    char *zbullet;
+    char *canvas;
+    char *copy_bullet;
     int size;
     int sizec;
     int target;
-    int zbulletsize;
+    int copy_bullet_size;
     int countpre = flagman.prec;
     int bulletsize = strlen(bullet);
+    int hyperkineticpositionreverser = -1;
 
     // printf("\n:flags:\n\n");
     // printf("minus %d\n",flagman.minus);
@@ -33,90 +34,123 @@ int dfinisher(char *bullet, struct flags flagman)
     // printf("type %c\n",flagman.type);
     // printf("flagsize %d\n",flagman.flagsize);
     // printf("bullet %s\n",bullet);
-    // printf("\n:flagend:\n");
+    // printf("\n:flagend:\n"); 
 
 
+   //if(flagman.prec != -1 && flagman.prec > bulletsize)
 
-   if(flagman.prec != -1 && flagman.prec > bulletsize)
+
+   if(flagman.prec == 0 && *bullet == '0' && *(bullet + 1) == '\0')
+        bullet[strlen(bullet) - 1] = ' ';
+    if(flagman.prec > bulletsize)
         {
 
-            if(!(zbullet = (char*)malloc(sizeof(char) * flagman.prec + 1)))
+            if(!(copy_bullet = (char*)malloc(sizeof(char) * flagman.prec + 1)))
                 return -1;
-            zbullet[flagman.prec] = '\0';
+            copy_bullet[flagman.prec] = '\0';
 
-            while(countpre >= 0)
+            while(countpre > 0)
             {
-                zbullet[countpre - 1] = '0';
+                copy_bullet[countpre - 1] = '0';
                 countpre--;
             }
-    printf("IM ON\n");
-    printf("z bullet is%s fp%d sb %lu\n", zbullet, flagman.prec, strlen(bullet));
-            //strcpy(&zbullet[flagman.prec - strlen(bullet)] , bullet);
-            strcpy(zbullet+(flagman.prec - strlen(bullet)) , bullet);
-    printf("IM ON\n");
-
+            
+    //printf("IM ON\n");
+    //printf("z bullet is%s fp%d sb %lu\n", zbullet, flagman.prec, strlen(bullet));
+            strcpy(&copy_bullet[flagman.prec - bulletsize ] , bullet);
+    if(bulletsize <= flagman.prec && *bullet == '-')
+        copy_bullet[flagman.prec - bulletsize ] = '0';
+            //strcpy(zbullet+(flaƒgman.prec - strlen(bullet)) , bullet);
+    //printf("IM ON\n");
         }
     else
-        zbullet = strdup(bullet);
+        copy_bullet = strdup(bullet);
 
-    printf("ihi cleared\n");
+
 
     if(flagman.zero == 1 && flagman.minus == 1)
         return -1;
 
     if(flagman.prec == -1)
     {
-        size = strlen(zbullet);
+        size = strlen(copy_bullet);
     }
- 
-    zbulletsize = strlen(zbullet);
+    
 
-    if(flagman.field > zbulletsize || flagman.prec < flagman.field)
+    copy_bullet_size = strlen(copy_bullet);
+
+    //originalif(flagman.field > copy_bullet_size || flagman.prec < flagman.field)
+    if( flagman.prec < flagman.field && flagman.field > copy_bullet_size)
     {
         size = flagman.field;
     }
     else
-        size = strlen(zbullet);
-    
-    if(!(camvas = (char*)malloc(sizeof(char)* size + 1)))
-        return -1;
-    camvas[size] = '\0';
-
-    sizec = size;
-
-    while (size >= 0)
-    {  
-        if(flagman.zero != -1)
-            camvas[size - 1] = '0';
-        else 
-            camvas[size - 1] = ' ';
-        size--;
+    {
+                size = strlen(copy_bullet);
     }
 
+    //printf("size %d\n",size);
+    if(bulletsize <= flagman.prec && *bullet == '-')
+    {
+        hyperkineticpositionreverser = 1;
+        size++;
+    }
+
+    if(!(canvas = (char*)malloc(sizeof(char)* size + 1)))
+        return -1;
+    canvas[size] = '\0';
+    sizec = size;
+
+    int second_precount = flagman.prec;
+    while (size >= 0)
+    {  
+        if(flagman.zero != -1 && second_precount)
+        {
+            canvas[size - 1] = '0';
+            second_precount--;
+        }
+        else
+        {
+            canvas[size - 1] = ' ';
+        }
+        size--;
+    }
+    
     //if(flagman.prec > strlen(zbullet))
-    flagman.prec = strlen(zbullet);
+    flagman.prec = strlen(copy_bullet);
 
     if(flagman.minus != -1)
+    {
         target =  flagman.prec;
+        if(hyperkineticpositionreverser == 1)
+        target++;
+        
+    }
     else
-        target = sizec;
+    {
+        target  = sizec;
+    }
     // printf("target %d flagman.prec %d\n",target,flagman.prec);
     if(flagman.prec == -1)
         flagman.prec = strlen(bullet);
+
+    if(hyperkineticpositionreverser == 1)
+    {
+        *canvas = '-';
+    }
+    
     while(flagman.prec != 0)
     {
-        camvas[target - 1] = zbullet[flagman.prec - 1];
+        canvas[target - 1] = copy_bullet[flagman.prec - 1];
         target--;
         flagman.prec--;
     }
     // char mes[40] = "\nthis is what we write\nmin_ver:";
     // write(1,mes,40);
-    write(1,camvas,strlen(camvas));
-
-    free(camvas);
-    free(zbullet);
+    write(1,canvas,strlen(canvas));
+    free(canvas);
+    free(copy_bullet);
     //printf("ori:%*.*s",flagman.field , flagman.prec, zbullet);
-
     return (sizec);
 }
 
@@ -124,6 +158,5 @@ int dfinisher(char *bullet, struct flags flagman)
 // {
 //     struct flags flagman = {-1,1,10,10,-1};
 //     char bullet[200] = "12345";
-
 //     dfinisher(bullet, flagman);
 // }

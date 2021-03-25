@@ -84,10 +84,10 @@ int sfinisher(struct flags flagman, char *bullet)
         target--;
         flagman.prec--;
     }
-//char mes[40] = "\nthis is what we write\n";
-   // write(1,mes,30);
+    //char mes[40] = "\nthis is what we write\n";
+    // write(1,mes,30)
     // char mes[40] = "\nthis is what we write\n";
-    // write(1,mes,40);
+    // write(1,mes,40)
     write(1,camvas,strlen(camvas));
     free(camvas);
 
