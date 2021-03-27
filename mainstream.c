@@ -4,13 +4,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-char* d_con(int d);
-char* x_con(int d, int flag);
-struct flags flagmaker(struct flags flagman, char *fmt, va_list ap);
-int dfinisher(char *bullet, struct flags flagman);
-int xfinisher(char *bullet, struct flags flagman);
-int sfinisher(struct flags flagman, char *bullet);
-
 struct flags
 {
     int minus;
@@ -21,6 +14,15 @@ struct flags
     int flagsize;
 };
 
+char *ft_itoa(long d, struct flags flagman);
+char* x_con(int d, int flag);
+struct flags flagmaker(struct flags flagman, char *fmt, va_list ap);
+int dfinisher(char *bullet, struct flags flagman);
+int xfinisher(char *bullet, struct flags flagman);
+int sfinisher(struct flags flagman, char *bullet);
+
+
+
 int ft_printf(char *fmt, ...)
 {
     va_list ap;
@@ -30,6 +32,7 @@ int ft_printf(char *fmt, ...)
     va_start(ap, fmt);
     int howmanywewrite;
     int bsize;
+    long uvalue;
 
     howmanywewrite = 0;
     p = fmt;
@@ -46,7 +49,6 @@ int ft_printf(char *fmt, ...)
             {
                 char c = va_arg(ap, int);
                 bullet = (char*)malloc(sizeof(char)*2);
-                free(bullet);
                 *bullet = c;
                 howmanywewrite += sfinisher(flagman, bullet);
             }
@@ -59,31 +61,41 @@ int ft_printf(char *fmt, ...)
             {
                 bullet = x_con(va_arg(ap, size_t), 'p');
                 howmanywewrite += dfinisher(bullet, flagman);
+                free (bullet);
+
             }
             if (*p == 'd')  
             {
-                bullet = d_con(va_arg(ap, int));
-                //printf("ms bullet %s\n",bullet);
+                bullet = ft_itoa(va_arg(ap, int), flagman);
                 howmanywewrite += dfinisher(bullet, flagman);
+                free (bullet);
             }
             if (*p == 'i')
             {
-                bullet = d_con(va_arg(ap, int));                
+                bullet = ft_itoa(va_arg(ap, int), flagman);                
                 howmanywewrite += dfinisher(bullet, flagman);
+                free (bullet);
 
             }
             if (*p == 'u')
             {
-                bullet = d_con(va_arg(ap, int));                
+                printf("on\n");
+                uvalue = va_arg(ap, long);
+                printf("uvalue us %zu\n", uvalue);
+
+                bullet = ft_itoa(uvalue, flagman);
                 howmanywewrite += dfinisher(bullet, flagman);
+                free (bullet);
             }
             if (*p == 'x')
                 {
-                bullet = x_con(va_arg(ap, size_t), 'x');
+                bullet = x_con(va_arg(ap, long), 'x');
                 bsize = strlen(bullet);
                 if(bsize > flagman.field)
                     flagman.field = bsize;
                 howmanywewrite += xfinisher(bullet, flagman);
+                free (bullet);
+
                 }
             if (*p == 'X')
             {
@@ -92,6 +104,7 @@ int ft_printf(char *fmt, ...)
                 if(bsize > flagman.field)
                     flagman.field = bsize;
                 howmanywewrite += xfinisher(bullet, flagman);
+                free (bullet);
             }
             if (*p == '%')
             {
@@ -107,19 +120,15 @@ int ft_printf(char *fmt, ...)
     }
     va_end(ap);
 
-    free (bullet);
+
     return howmanywewrite;
 }
 
-// int main()
-// {
-//     printf(":%-3.10d\n",-54321);
-//     ft_printf(";%-3.10d\n",-54321);
-//         printf(":%-.10d\n",-54321);
-//     ft_printf(";%-.10d\n",-54321);
-//     system("leaks a.out");
-
-// }
+int main()
+{
+    printf(":%-3.10u\n",-54321);
+ ft_printf(":%-3.10u\n",-54321);
+}
 
 // int main()
 // {

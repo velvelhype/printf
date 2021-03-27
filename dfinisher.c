@@ -26,19 +26,18 @@ int dfinisher(char *bullet, struct flags flagman)
     int bulletsize = strlen(bullet);
     int hyperkineticpositionreverser = -1;
 
-    // printf("\n:flags:\n\n");
-    // printf("minus %d\n",flagman.minus);
-    // printf("zero %d\n",flagman.zero);
-    // printf("fie %d\n",flagman.field);
-    // printf("prec %d\n",flagman.prec);
-    // printf("type %c\n",flagman.type);
-    // printf("flagsize %d\n",flagman.flagsize);
-    // printf("bullet %s\n",bullet);
-    // printf("\n:flagend:\n"); 
+    printf("\n:flags:\n\n");
+    printf("minus %d\n",flagman.minus);
+    printf("zero %d\n",flagman.zero);
+    printf("fie %d\n",flagman.field);
+    printf("prec %d\n",flagman.prec);
+    printf("type %c\n",flagman.type);
+    printf("flagsize %d\n",flagman.flagsize);
+    printf("bullet %s\n",bullet);
+    printf("\n:flagend:\n"); 
 
 
    //if(flagman.prec != -1 && flagman.prec > bulletsize)
-
 
    if(flagman.prec == 0 && *bullet == '0' && *(bullet + 1) == '\0')
         bullet[strlen(bullet) - 1] = ' ';

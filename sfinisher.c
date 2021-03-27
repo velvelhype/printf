@@ -23,7 +23,7 @@ struct flags
 
 int sfinisher(struct flags flagman, char *bullet)
 {
-    char *camvas;
+    char *canvas;
 
     int size;
     int sizec;
@@ -52,18 +52,18 @@ int sfinisher(struct flags flagman, char *bullet)
         size = flagman.prec;
 
     
-    if(!(camvas = (char*)malloc(sizeof(char)* size + 1)))
+    if(!(canvas = (char*)malloc(sizeof(char)* size + 1)))
         return -1;
-    camvas[size] = '\0';
+    canvas[size] = '\0';
 
     sizec = size;
     //printf("size %d\n",size);
     while (size >= 0)
     {
         if(flagman.zero != -1)
-            camvas[size - 1] = '0';
+            canvas[size - 1] = '0';
         else 
-            camvas[size - 1] = ' ';
+            canvas[size - 1] = ' ';
         size--;
     }
 
@@ -75,21 +75,17 @@ int sfinisher(struct flags flagman, char *bullet)
     else
         target = sizec;
 
-    // printf("target %d flagman.prec %d\n",target,flagman.prec);
-
-    while(flagman.prec != 0)
+    //printf("target %d flagman.prec %d\n",sizec,flagman.prec);
+    while(sizebullet > 0)
     {
-        camvas[target - 1] = bullet[flagman.prec - 1];
-        // printf("camvas %c bullet %c\n",camvas[target - 1] ,bullet[flagman.prec - 1]);
+       // printf("point %c\n",bullet[sizebullet - 1]);
+        canvas[target - 1] = bullet[sizebullet - 1];
+        // printf("canvas %c bullet %c\n",canvas[target - 1] ,bullet[flagman.prec - 1]);
         target--;
-        flagman.prec--;
+        sizebullet--;
     }
-    //char mes[40] = "\nthis is what we write\n";
-    // write(1,mes,30)
-    // char mes[40] = "\nthis is what we write\n";
-    // write(1,mes,40)
-    write(1,camvas,strlen(camvas));
-    free(camvas);
+    write(1,canvas,strlen(canvas));
+    free(canvas);
 
     return (sizec);
 }
