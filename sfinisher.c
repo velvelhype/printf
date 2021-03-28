@@ -38,24 +38,25 @@ int sfinisher(struct flags flagman, char *bullet)
     // printf("type %c\n",flagman.type);
     // printf("flagsize %d\n",flagman.flagsize);
     // printf("bullet %s\n",bullet);
+    // printf("sizebullet %d\n",sizebullet);
     // printf("\n:flagend:\n");
+
     if(flagman.zero == 1 && flagman.minus ==1)
         printf("ERRROR");
     
-    if((flagman.prec == -1 && flagman.field == -1) || flagman.field <= sizebullet)
+    if(flagman.prec == -1 && flagman.field == -1 && flagman.field <= sizebullet)
         size = strlen(bullet);
     else if((flagman.field > sizebullet || flagman.prec < flagman.field) && flagman.field != -1)
     {
         size = flagman.field;
     }
     else
+    {
         size = flagman.prec;
-
-    
+    }
     if(!(canvas = (char*)malloc(sizeof(char)* size + 1)))
         return -1;
     canvas[size] = '\0';
-
     sizec = size;
     //printf("size %d\n",size);
     while (size >= 0)
@@ -66,16 +67,20 @@ int sfinisher(struct flags flagman, char *bullet)
             canvas[size - 1] = ' ';
         size--;
     }
-
-    if(flagman.prec > sizebullet)
-        flagman.prec = sizebullet;
-
+    if(flagman.prec != -1)
+    {
+        sizebullet = flagman.prec;
+    }
     if(flagman.minus != -1)
-        target =  flagman.prec;
+    {
+        if(flagman.prec != -1)
+            target =  flagman.prec;
+        else
+            target = 1;
+    }
     else
         target = sizec;
 
-    //printf("target %d flagman.prec %d\n",sizec,flagman.prec);
     while(sizebullet > 0)
     {
        // printf("point %c\n",bullet[sizebullet - 1]);
@@ -84,7 +89,7 @@ int sfinisher(struct flags flagman, char *bullet)
         target--;
         sizebullet--;
     }
-    write(1,canvas,strlen(canvas));
+    write(1, canvas, strlen(canvas));
     free(canvas);
 
     return (sizec);

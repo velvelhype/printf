@@ -14,16 +14,13 @@ struct flags
     int flagsize;
 };
 
-char *ft_itoa(long d, struct flags flagman)
+char *ft_itoa(long d)
 {
     int neg = 0;
     long len = 0;
     char *slot;
     long ruler = 1;
 
-    printf("in itoa %ld\n",d);
-
-    printf("type %c\n",flagman.type);
     if (d == -2147483648)
         return (strdup("-2147483648"));
     if(d < 0)
