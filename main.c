@@ -2,10 +2,9 @@
 int main()
 {
     int a;
-ft_printf("ft %d\n", 3);
-   printf("or %d\n", 3);
-ft_printf("ft %d\n", 3);
-   printf("or %d\n", 3);
+
+ft_printf("%-32s\n", "abc");
+   printf("%-32s\n", "abc");
 
        
 // ft_printf("%%\n");

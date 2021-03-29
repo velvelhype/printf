@@ -31,7 +31,8 @@ int sfinisher(struct flags flagman, char *bullet)
     if(flagman.zero == 1 && flagman.minus ==1)
         printf("ERRROR");
     
-    if(flagman.prec == -1 && flagman.field == -1 && flagman.field <= sizebullet)
+    //if(flagman.prec == -1 && flagman.field == -1 && flagman.field <= sizebullet)
+    if(flagman.prec == -1 && flagman.field <= sizebullet)
         size = strlen(bullet);
     else if((flagman.field > sizebullet || flagman.prec < flagman.field) && flagman.field != -1)
     {
@@ -63,16 +64,14 @@ int sfinisher(struct flags flagman, char *bullet)
         if(flagman.prec != -1)
             target =  flagman.prec;
         else
-            target = 1;
+            target = sizebullet;
     }
     else
         target = sizec;
-
     while(sizebullet > 0)
     {
-       // printf("point %c\n",bullet[sizebullet - 1]);
         canvas[target - 1] = bullet[sizebullet - 1];
-        // printf("canvas %c bullet %c\n",canvas[target - 1] ,bullet[flagman.prec - 1]);
+        //printf("canvas %c bullet %c\n",canvas[target - 1] ,bullet[flagman.prec - 1]);
         target--;
         sizebullet--;
     }
