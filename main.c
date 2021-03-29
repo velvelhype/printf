@@ -2,8 +2,8 @@
 int main()
 {
     int a;
-    ft_printf("ftt%p\n", &a);
-       printf("ori%p\n", &a);
+    ft_printf("ftt%s\n", NULL);
+       printf("ori%s\n", NULL);
 // ft_printf("%%\n");
 //    printf("%%\n");
 //  ft_printf("ft %.c\n",'a');

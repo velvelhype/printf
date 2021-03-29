@@ -10,6 +10,7 @@ int ft_printf(char *fmt, ...)
     int howmanywewrite;
     int bsize;
     long uvalue;
+    char null[7] = "(null)";
 
     howmanywewrite = 0;
     p = fmt;
@@ -33,6 +34,11 @@ int ft_printf(char *fmt, ...)
             if (*p == 's')
             {
                 bullet = va_arg(ap, char *);
+                if(bullet == NULL)
+                {
+                howmanywewrite += sfinisher(flagman, null);
+                }
+                else
                 howmanywewrite += sfinisher(flagman, bullet);
             }
             if (*p == 'd')  
