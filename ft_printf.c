@@ -30,6 +30,7 @@ int ft_printf(char *fmt, ...)
                 *bullet = c;
                 *(bullet + 1) = '\0';
                 howmanywewrite += sfinisher(flagman, bullet);
+                free (bullet);
             }
             if (*p == 's')
             {
@@ -93,7 +94,12 @@ int ft_printf(char *fmt, ...)
             }
             if (*p == '%')
             {
-                write(1,p,1);
+                bullet = (char*)malloc(sizeof(char) * 2);
+                *bullet = '%';
+                *(bullet + 1) = '\0';
+                //printf("\nbullet %s\n",bullet);
+                howmanywewrite += sfinisher(flagman, bullet);
+                free (bullet);
             }
         }
         else

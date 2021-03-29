@@ -2,10 +2,9 @@
 
 int typefinder(char s)
 {
-    if (s == 'c' || s ==
-     's' || s == 'p' || s == 'd')
+    if (s == 'c' || s =='s' || s == 'p' || s == 'd')
         return s;
-    if (s == 'i' || s == 'u' || s == 'x' || s == 'X')
+    if (s == 'i' || s == 'u' || s == 'x' || s == 'X' || s == '%')
         return s;
     return 0;
 }
