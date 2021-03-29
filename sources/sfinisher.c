@@ -58,7 +58,7 @@ int sfinisher(struct flags flagman, char *bullet)
     {
         sizebullet = flagman.prec;
     }
-    if(flagman.minus != -1)
+    if(flagman.minus != -1 && flagman.field > 0)
     {
         if(flagman.prec != -1)
             target =  flagman.prec;

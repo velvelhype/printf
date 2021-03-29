@@ -24,6 +24,16 @@ int dfinisher(char *bullet, struct flags flagman)
 
 
    //if(flagman.prec != -1 && flagman.prec > bulletsize)
+    //     if(bulletsize <= flagman.prec && *bullet == '-' && flagman.minus != 1)
+    // {
+    //     hyperkineticpositionreverser = 1;
+    //     *bullet = '0';
+    // }
+    //     if(flagman.field > bulletsize && *bullet == '-' && flagman.minus != 1)
+    // {
+    //     hyperkineticpositionreverser = 1;
+    //     *bullet = '0';
+    // }
 
    if(flagman.prec == 0 && *bullet == '0' && *(bullet + 1) == '\0')
         bullet[strlen(bullet) - 1] = ' ';
@@ -39,19 +49,12 @@ int dfinisher(char *bullet, struct flags flagman)
                 copy_bullet[countpre - 1] = '0';
                 countpre--;
             }
-            
-    //printf("IM ON\n");
-    //printf("z bullet is%s fp%d sb %lu\n", zbullet, flagman.prec, strlen(bullet));
             strcpy(&copy_bullet[flagman.prec - bulletsize ] , bullet);
     if(bulletsize <= flagman.prec && *bullet == '-')
         copy_bullet[flagman.prec - bulletsize ] = '0';
-            //strcpy(zbullet+(flaƒgman.prec - strlen(bullet)) , bullet);
-    //printf("IM ON\n");
         }
     else
         copy_bullet = strdup(bullet);
-
-
 
     if(flagman.zero == 1 && flagman.minus == 1)
         return -1;
@@ -60,7 +63,6 @@ int dfinisher(char *bullet, struct flags flagman)
     {
         size = strlen(copy_bullet);
     }
-    
 
     copy_bullet_size = strlen(copy_bullet);
 
@@ -71,16 +73,18 @@ int dfinisher(char *bullet, struct flags flagman)
     }
     else
     {
-                size = strlen(copy_bullet);
+        size = strlen(copy_bullet);
     }
 
     //printf("size %d\n",size);
-    if(bulletsize <= flagman.prec && *bullet == '-')
-    {
-        hyperkineticpositionreverser = 1;
-        size++;
-    }
-
+    // if(bulletsize <= flagman.prec && *bullet == '-')
+    // {
+    //     hyperkineticpositionreverser = 1;
+    // }
+    // if(flagman.field > bulletsize && *bullet == '-')
+    // {
+    //     hyperkineticpositionreverser = 1;
+    // }
     if(!(canvas = (char*)malloc(sizeof(char)* size + 1)))
         return -1;
     canvas[size] = '\0';
@@ -89,7 +93,7 @@ int dfinisher(char *bullet, struct flags flagman)
     int second_precount = flagman.prec;
     while (size >= 0)
     {  
-        if(flagman.zero != -1 && second_precount)
+        if(flagman.zero == 1 && second_precount)
         {
             canvas[size - 1] = '0';
             second_precount--;
