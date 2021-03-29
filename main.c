@@ -2,10 +2,10 @@
 int main()
 {
     int a;
-ft_printf("ft %.3d\n", 100);
-   printf("or %.3d\n", 100);
-ft_printf("ft %.3d\n", 10);
-   printf("or %.3d\n", 10);
+ft_printf("ft %d\n", 3);
+   printf("or %d\n", 3);
+ft_printf("ft %d\n", 3);
+   printf("or %d\n", 3);
 
        
 // ft_printf("%%\n");

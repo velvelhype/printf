@@ -8,7 +8,7 @@ char *ft_itoa(size_t e)
     long ruler = 1;
     long d = e;
 
-    // printf("d is %ld\n", d);
+    //printf("d is %ld\n", d);
 
     if (d == -2147483648)
         return (strdup("-2147483648"));
@@ -19,7 +19,7 @@ char *ft_itoa(size_t e)
     }
     if(d < 10)
         len = 1;
-    while(ruler <= d)
+    while(ruler <= d && d >= 10)
     {
         ruler *= 10;
         len++;
