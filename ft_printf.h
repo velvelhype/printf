@@ -19,7 +19,7 @@ struct flags
 };
 
 
-char *ft_itoa(long d);
+char *ft_itoa(size_t d);
 char *x_con(size_t d, int flag);
 struct flags flagmaker(struct flags flagman, char *fmt, va_list ap);
 int dfinisher(char *bullet, struct flags flagman);

@@ -1,11 +1,12 @@
 #include "../includes/ft_printf.h"
 
-char *ft_itoa(long d)
+char *ft_itoa(size_t e)
 {
     int neg = 0;
     long len = 0;
     char *slot;
     long ruler = 1;
+    long d = e;
 
     if (d == -2147483648)
         return (strdup("-2147483648"));
@@ -49,7 +50,7 @@ char hexmaker(size_t x, int flag)
     //return x;
 }
 
-int hexdigit(int d)
+int hexdigit(size_t d)
 {
     int count = 0;
 
@@ -76,11 +77,8 @@ char *x_con(size_t d, int flag)
 {
     size_t amari = 0;
     int len = 0;
-    const char loc[4] = "0x10";
     char *slot;
 
-    if(flag == 'p')
-        write(1,&loc,4);
     if(d < 0)
     {
         //printf("heywattttt\n");
@@ -96,7 +94,7 @@ char *x_con(size_t d, int flag)
     len--;
     while(len >= 0)
     {
-      //  printf("now 16is%zu\n",d);
+        // printf("now 16is%zx\n",d);
         amari = d % 16;
         //printf("d is %zu amari is %zu\n",d,amari);
         slot[len] = hexmaker(amari, flag);
@@ -111,6 +109,6 @@ char *x_con(size_t d, int flag)
     }
 
     //printf("DOOne :perrrrfect %s\n",slot);
-  //  printf("conv:slot is %s\n",slot);
+    // printf("conv:slot is %s\n",slot);
     return slot;
 }

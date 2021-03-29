@@ -8,7 +8,7 @@ int xfinisher(char *bullet, struct flags flagman)
     int sizec;
     int target;
     int copy_bullet_size;
-    int countpre = flagman.prec;
+    int countpre = flagman.prec;    
     int bulletsize = strlen(bullet);
 
     // printf("\n:flags:\n\n");

@@ -35,19 +35,13 @@ int ft_printf(char *fmt, ...)
                 bullet = va_arg(ap, char *);
                 howmanywewrite += sfinisher(flagman, bullet);
             }
-            if (*p == 'p')
-            {
-                bullet = x_con(va_arg(ap, size_t), 'p');
-                howmanywewrite += dfinisher(bullet, flagman) + 4;
-                free (bullet);
-
-            }
             if (*p == 'd')  
             {
                 bullet = ft_itoa(va_arg(ap, int));
                 howmanywewrite += dfinisher(bullet, flagman);
                 free (bullet);
             }
+
             if (*p == 'i')
             {
                 bullet = ft_itoa(va_arg(ap, int));                
@@ -64,7 +58,7 @@ int ft_printf(char *fmt, ...)
             }
             if (*p == 'x')
                 {
-                bullet = x_con(va_arg(ap, long), 'x');
+                bullet = x_con(va_arg(ap, size_t), 'x');
                 bsize = strlen(bullet);
                 if(bsize > flagman.field)
                     flagman.field = bsize;
@@ -79,6 +73,16 @@ int ft_printf(char *fmt, ...)
                 if(bsize > flagman.field)
                     flagman.field = bsize;
                 howmanywewrite += xfinisher(bullet, flagman);
+                free (bullet);
+            }
+            if (*p == 'p')
+            {
+                char *unified_bullet;
+                const char loc[2] = "0x";
+                bullet = x_con(va_arg(ap, size_t), 'p');
+                unified_bullet = ft_strjoin(loc, bullet);
+                //printf("unibullet is %s\n",unified_bullet);
+                howmanywewrite += xfinisher(unified_bullet, flagman);
                 free (bullet);
             }
             if (*p == '%')
