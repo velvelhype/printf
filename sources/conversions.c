@@ -8,6 +8,8 @@ char *ft_itoa(size_t e)
     long ruler = 1;
     long d = e;
 
+    // printf("d is %ld\n", d);
+
     if (d == -2147483648)
         return (strdup("-2147483648"));
     if(d < 0)
@@ -17,7 +19,7 @@ char *ft_itoa(size_t e)
     }
     if(d < 10)
         len = 1;
-    while(ruler < d && d > 10)
+    while(ruler <= d)
     {
         ruler *= 10;
         len++;
@@ -26,14 +28,15 @@ char *ft_itoa(size_t e)
     if(!(slot = (char*)malloc(sizeof(char)* len + neg + 1)))
          return (NULL);
     slot[len + neg] = '\0';
-    //printf("len%zu neg%d end is %lu\n",len, neg, len + neg - 1);
+    // printf("len%zu neg %d end\n",len, neg);
     //printf("mid log slot %s\n",slot);
     while(len > 0)
     {
         slot[--len + neg] = d % 10 + 48;
-        //printf("now loading%lu:%c\n",len + neg,slot[len + neg]);
+        // printf("now loading%lu:%c\n",len + neg, slot[len + neg]);
         d /= 10;
     }
+    // printf("end loading %s\n", slot);
     slot[0] = neg == 1 ? '-' : slot[0];
     return (slot);
 }
