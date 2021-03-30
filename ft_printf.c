@@ -88,12 +88,19 @@ int ft_printf(char *fmt, ...)
             if (*p == 'p')
             {
                 char *unified_bullet;
-                const char loc[2] = "0x";
-                bullet = x_con(va_arg(ap, size_t), 'p');
+                const char loc[3] = "0x";
+                if(flagman.prec == 0)
+                {
+                    bullet = (char*)malloc(sizeof(char) * 1);
+                    *bullet = '\0';
+                }
+                else
+                    bullet = x_con(va_arg(ap, size_t), 'p');
+                //printf("bullet%s\n",bullet);
                 unified_bullet = ft_strjoin(loc, bullet);
-                //printf("unibullet is %s\n",unified_bullet);
                 howmanywewrite += xfinisher(unified_bullet, flagman);
                 free (bullet);
+                free(unified_bullet);
             }
             if (*p == '%')
             {

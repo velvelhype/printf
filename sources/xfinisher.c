@@ -20,7 +20,7 @@ int xfinisher(char *bullet, struct flags flagman)
     // printf("flagsize %d\n",flagman.flagsize);
     // printf("bullet %s\n",bullet);
     // printf("\n:flagend:\n"); 
-   //if(flagman.prec != -1 && flagman.prec > bulletsize)
+   if(flagman.prec != -1 && flagman.prec > bulletsize)
 
    if(flagman.prec == 0 && *bullet == '0' && *(bullet + 1) == '\0')
         bullet[strlen(bullet) - 1] = ' ';
@@ -55,13 +55,14 @@ int xfinisher(char *bullet, struct flags flagman)
  
     copy_bullet_size = strlen(copy_bullet);
 
-    if(flagman.field > copy_bullet_size || flagman.prec < flagman.field)
+   // if((flagman.field > copy_bullet_size || flagman.prec < flagman.field )&& flagman.prec != 0)
+    if(flagman.field > copy_bullet_size || flagman.prec < flagman.field )
     {
         size = flagman.field;
     }
     else
     {
-                size = strlen(copy_bullet);
+        size = strlen(copy_bullet);
     }
     
     if(!(canvas = (char*)malloc(sizeof(char)* size + 1)))
@@ -92,6 +93,7 @@ int xfinisher(char *bullet, struct flags flagman)
     // printf("target %d flagman.prec %d\n",target,flagman.prec);
     if(flagman.prec == -1)
         flagman.prec = strlen(bullet);
+   // printf("size %d target %d fp %d\n",size,target, flagman.prec);
     while(flagman.prec != 0)
     {
         canvas[target - 1] = copy_bullet[flagman.prec - 1];
