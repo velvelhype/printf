@@ -3,8 +3,25 @@ int main()
 {
     int a;
 
-ft_printf("%3.7s%7.7s\n", "hello", "world");
-   printf("%3.7s%7.7s\n", "hello", "world");
+ft_printf("%5.c\n", 'a');
+   printf("%5.c\n", 'a');
+ft_printf("%5.0c\n", 'a');
+   printf("%5.0c\n", 'a');
+ft_printf("%5.1c\n", 'a');
+   printf("%5.1c\n", 'a');
+ft_printf("%5.2c\n", 'a');
+   printf("%5.2c\n", 'a');
+
+printf("ss\n");
+ ft_printf("%5.s\n", "a");
+    printf("%5.s\n", "a");
+ft_printf("%5.0s\n", "a");
+   printf("%5.0s\n", "a");
+ft_printf("%5.1s\n", "a");
+   printf("%5.1s\n", "a");
+ft_printf("%5.2s\n", "a");
+   printf("%5.2s\n", "a");
+
 
        
 // ft_printf("%%\n");

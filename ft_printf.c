@@ -29,12 +29,15 @@ int ft_printf(char *fmt, ...)
                 bullet = (char*)malloc(sizeof(char) * 2);
                 *bullet = c;
                 *(bullet + 1) = '\0';
+                if(flagman.prec == 0)
+                    flagman.prec = 1;
                 howmanywewrite += sfinisher(flagman, bullet);
                 free (bullet);
             }
             if (*p == 's')
             {
                 bullet = va_arg(ap, char *);
+
                 if(bullet == NULL)
                 {
                 howmanywewrite += sfinisher(flagman, null);
