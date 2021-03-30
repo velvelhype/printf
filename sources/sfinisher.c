@@ -55,10 +55,18 @@ int sfinisher(struct flags flagman, char *bullet)
             canvas[size - 1] = ' ';
         size--;
     }
+    //if(flagman.prec != -1 && flagman.prec < sizebullet)
     if(flagman.prec != -1)
     {
-        sizebullet = flagman.prec;
+        if(flagman.field != -1)
+        {
+            if(flagman.prec < sizebullet)
+                sizebullet = flagman.prec;
+        }
+        else
+            sizebullet = flagman.prec;
     }
+
     if(flagman.minus != -1 && flagman.field > 0)
     {
         if(flagman.prec != -1)
@@ -68,10 +76,12 @@ int sfinisher(struct flags flagman, char *bullet)
     }
     else
         target = sizec;
+    
+    // printf("camvas %s bullet %s\n",canvas,bullet);
     while(sizebullet > 0)
     {
         canvas[target - 1] = bullet[sizebullet - 1];
-        //printf("canvas %c bullet %c\n",canvas[target - 1] ,bullet[flagman.prec - 1]);
+        // printf("canvas %d bullet %d\n",target - 1 ,sizebullet - 1);
         target--;
         sizebullet--;
     }

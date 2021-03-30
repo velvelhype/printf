@@ -3,8 +3,8 @@ int main()
 {
     int a;
 
-ft_printf("%-32s\n", "abc");
-   printf("%-32s\n", "abc");
+ft_printf("%3.7s%7.7s\n", "hello", "world");
+   printf("%3.7s%7.7s\n", "hello", "world");
 
        
 // ft_printf("%%\n");
