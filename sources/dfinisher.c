@@ -37,7 +37,24 @@ int dfinisher(char *bullet, struct flags flagman)
 
    if(flagman.prec == 0 && *bullet == '0' && *(bullet + 1) == '\0')
         bullet[strlen(bullet) - 1] = ' ';
-    if(flagman.prec > bulletsize)
+
+    if(flagman.prec >= bulletsize && *bullet == '-')
+    {
+        if(!(copy_bullet = (char*)malloc(sizeof(char) * flagman.prec + 2)))
+            return -1;
+        copy_bullet[flagman.prec + 1] = '\0';
+        countpre++;
+            while(countpre > 0)
+            {
+                copy_bullet[countpre - 1] = '0';
+                countpre--; 
+            }
+        strcpy(&copy_bullet[flagman.prec - bulletsize + 2] , bullet + 1);
+        *copy_bullet = '-';
+
+        
+    }
+    else if(flagman.prec > bulletsize)
         {
 
             if(!(copy_bullet = (char*)malloc(sizeof(char) * flagman.prec + 1)))
@@ -50,8 +67,8 @@ int dfinisher(char *bullet, struct flags flagman)
                 countpre--;
             }
             strcpy(&copy_bullet[flagman.prec - bulletsize ] , bullet);
-    if(bulletsize <= flagman.prec && *bullet == '-')
-        copy_bullet[flagman.prec - bulletsize ] = '0';
+    // if(bulletsize <= flagman.prec && *bullet == '-')
+    //     copy_bullet[flagman.prec - bulletsize ] = '0';
         }
     else
         copy_bullet = strdup(bullet);

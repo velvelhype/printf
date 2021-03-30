@@ -2,8 +2,18 @@
 int main()
 {
     int a;
-    ft_printf("%.d\n", 0);
-    printf("%.d\n", 0);
+ft_printf("%10.6d\n", -1024);
+   printf("%10.6d\n", -1024);
+ft_printf("%10.5d\n", -1024);
+   printf("%10.5d\n", -1024);
+ft_printf("%10.4d\n", -1024);
+   printf("%10.4d\n", -1024);
+ft_printf("%6d\n", -1024);
+   printf("%6d\n", -1024);
+ft_printf("%5d\n", -1024);
+   printf("%5d\n", -1024);
+ft_printf("%4d\n", -1024);
+   printf("%4d\n", -1024);
     
 // ft_printf("%.p\n", NULL);
 //    printf("%.p\n", NULL);
