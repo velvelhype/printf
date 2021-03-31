@@ -20,7 +20,11 @@ int xfinisher(char *bullet, struct flags flagman)
     // printf("flagsize %d\n",flagman.flagsize);
     // printf("bullet %s\n",bullet);
     // printf("\n:flagend:\n"); 
-   if(flagman.prec != -1 && flagman.prec > bulletsize)
+    if(flagman.field <= 1 && flagman.prec == 0 && bulletsize == 1 && *bullet  == '0')
+    {
+        write(1,NULL,1);
+        return 0;
+    }
 
    if(flagman.prec == 0 && *bullet == '0' && *(bullet + 1) == '\0')
         bullet[strlen(bullet) - 1] = ' ';
