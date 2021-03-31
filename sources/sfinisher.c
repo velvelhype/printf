@@ -44,6 +44,8 @@ int sfinisher(struct flags flagman, char *bullet)
     {
         size = flagman.prec;
     }
+    if(flagman.type == 'c' && *bullet == '\0')
+        size--;
     if(!(canvas = (char*)malloc(sizeof(char)* size + 1)))
         return -1;
     canvas[size] = '\0';

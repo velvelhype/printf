@@ -3,6 +3,10 @@ int main()
 {
     int a;
 
+    ft_printf("%05c...\n", '\0');
+       printf("%05c...\n", '\0');
+    ft_printf("%05s...\n", "\0");
+       printf("%05s...\n", "\0");
     // ft_printf("%010d\n", -54);
     //    printf("%010d\n", -54);
     // ft_printf("%04d\n", -54);
@@ -21,18 +25,18 @@ int main()
     // ft_printf("%4.15d\n", 424242);
     //    printf("2\n");
     //    printf("%4.15d\n", 424242);
-       printf("f1\n");
-    ft_printf("%.15d\n", 424242);
-       printf("f2\n");
-       printf("%.15d\n", 424242);
-       printf("f3\n");
-    ft_printf("%01.15d\n", 424242);
-       printf("f4\n");
-       printf("%01.15d\n", 424242);
-       printf("1\n");
-    ft_printf("%4.16d\n", 424242);
-       printf("2\n");
-       printf("%4.16d\n", 424242);
+    //    printf("f1\n");
+    // ft_printf("%.15d\n", 424242);
+    //    printf("f2\n");
+    //    printf("%.15d\n", 424242);
+    //    printf("f3\n");
+    // ft_printf("%01.15d\n", 424242);
+    //    printf("f4\n");
+    //    printf("%01.15d\n", 424242);
+    //    printf("1\n");
+    // ft_printf("%4.16d\n", 424242);
+    //    printf("2\n");
+    //    printf("%4.16d\n", 424242);
 
 // printf("ft\n");
 // ft_printf("%5.d...\n", 0);
