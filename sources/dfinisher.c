@@ -12,6 +12,11 @@ int dfinisher(char *bullet, struct flags flagman)
     int bulletsize = strlen(bullet);
     int hyperkineticpositionreverser = -1;
 
+    // if(flagman.zero == 1 && flagman.field > bulletsize && flagman.prec == -1)
+    // {
+    //     hyperkineticpositionreverser = 1;
+    //     *bullet = '0';
+    // }
     // printf("\n:flags:\n\n");
     // printf("minus %d\n",flagman.minus);
     // printf("zero %d\n",flagman.zero);
@@ -29,11 +34,11 @@ int dfinisher(char *bullet, struct flags flagman)
     //     hyperkineticpositionreverser = 1;
     //     *bullet = '0';
     // }
-    //     if(flagman.field > bulletsize && *bullet == '-' && flagman.minus != 1)
-    // {
-    //     hyperkineticpositionreverser = 1;
-    //     *bullet = '0';
-    // }
+        if(flagman.zero == 1 && flagman.field > bulletsize && *bullet == '-' && flagman.prec == -1)
+    {
+        hyperkineticpositionreverser = 1;
+        *bullet = '0';
+    }
 
     if(flagman.field <= 1 && flagman.prec == 0 && bulletsize == 1 && *bullet  == '0')
     {
@@ -171,6 +176,9 @@ int dfinisher(char *bullet, struct flags flagman)
     }
     // char mes[40] = "\nthis is what we write\nmin_ver:";
     // write(1,mes,40);
+    if(hyperkineticpositionreverser == 1)
+        *canvas = '-';
+
     write(1,canvas,strlen(canvas));
     free(canvas);
     free(copy_bullet);

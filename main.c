@@ -3,10 +3,14 @@ int main()
 {
     int a;
 
-    ft_printf("%05c...\n", '\0');
-       printf("%05c...\n", '\0');
-    ft_printf("%05s...\n", "\0");
-       printf("%05s...\n", "\0");
+
+ft_printf("%07d\n", -54);
+   printf("%07d\n", -54);
+       
+         // ft_printf("..%-5c...\n", '\0');
+    //    printf("..%-5c...\n", '\0');
+    // ft_printf("..%-5s...\n", "\0");
+    //    printf("..%-5s...\n", "\0");
     // ft_printf("%010d\n", -54);
     //    printf("%010d\n", -54);
     // ft_printf("%04d\n", -54);
