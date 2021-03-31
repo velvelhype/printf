@@ -35,6 +35,12 @@ int dfinisher(char *bullet, struct flags flagman)
     //     *bullet = '0';
     // }
 
+    if(flagman.field <= 1 && flagman.prec == 0 && bulletsize == 1 && *bullet  == '0')
+    {
+        write(1,NULL,1);
+        return 0;
+    }
+
    if(flagman.prec == 0 && *bullet == '0' && *(bullet + 1) == '\0')
         bullet[strlen(bullet) - 1] = ' ';
 
@@ -51,8 +57,6 @@ int dfinisher(char *bullet, struct flags flagman)
             }
         strcpy(&copy_bullet[flagman.prec - bulletsize + 2] , bullet + 1);
         *copy_bullet = '-';
-
-        
     }
     else if(flagman.prec > bulletsize)
         {

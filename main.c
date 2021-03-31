@@ -2,28 +2,42 @@
 int main()
 {
     int a;
-    printf("-4.7\n");
-    ft_printf("%-4.7s\n", "hello");
-    printf("%-4.7s\n", "hello");
-    printf("-5.7\n");
-    ft_printf("%-5.7s\n", "hello");
-    printf("%-5.7s\n", "hello");
-    printf("5.7\n");
-    ft_printf("%5.7s\n", "hello");
-    printf("%5.7s\n", "hello");
-    printf("7\n");
-    ft_printf("%7s\n", "hello");
-    printf("%7s\n", "hello");
-    printf("6.7\n");
-    ft_printf("%6.7s\n", "hello");
-    printf("%6.7s\n", "hello");
-    printf("7.7\n");
+printf("ft\n");
+ft_printf("%5.d...\n", 0);
+printf("ori\n");
+   printf("%5.d...\n", 0);
+   printf("%5.0d...\n", 0);
+   printf("%5.d...\n", 1);
+   printf("%5.0d...\n", 1);
+ft_printf("%5.0d, %5.0d\n", 0, 0);
+   printf("%5.0d, %5.0d\n", 0, 0);
+ ft_printf("%1.0d, %5.0d\n", 0, 0);
+   printf("%0.0d, %5.0d\n", 0, 0);
+
+   //printf("%8.5x\n", 34);
+
+    // printf("-4.7\n");
+    // ft_printf("%-4.7s\n", "hello");
+    // printf("%-4.7s\n", "hello");
+    // printf("-5.7\n");
+    // ft_printf("%-5.7s\n", "hello");
+    // printf("%-5.7s\n", "hello");
+    // printf("5.7\n");
+    // ft_printf("%5.7s\n", "hello");
+    // printf("%5.7s\n", "hello");
+    // printf("7\n");
+    // ft_printf("%7s\n", "hello");
+    // printf("%7s\n", "hello");
+    // printf("6.7\n");
+    // ft_printf("%6.7s\n", "hello");
+    // printf("%6.7s\n", "hello");
+    // printf("7.7\n");
     
-    ft_printf("%7.7s\n", "hello");
-    printf("%7.7s\n", "hello");
-    printf("8.7\n");
-    ft_printf("%8.7s\n", "hello");
-    printf("%8.7s\n", "hello");
+    // ft_printf("%7.7s\n", "hello");
+    // printf("%7.7s\n", "hello");
+    // printf("8.7\n");
+    // ft_printf("%8.7s\n", "hello");
+    // printf("%8.7s\n", "hello");
     // ft_printf("%10.6d\n", -1024);
     //    printf("%10.6d\n", -1024);
     // ft_printf("%10.5d\n", -1024);

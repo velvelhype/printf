@@ -1,7 +1,8 @@
 {
     "files.associations": {
         "stdlib.h": "c",
-        "printf.h": "c"
+        "printf.h": "c",
+        "system_error": "c"
     },
     "editor.minimap.enabled": false
 }
