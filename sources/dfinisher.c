@@ -110,9 +110,24 @@ int dfinisher(char *bullet, struct flags flagman)
         return -1;
     canvas[size] = '\0';
     sizec = size;
+    // printf("aftermath %s\n",copy_bullet);
 
     int second_precount = flagman.prec;
-    while (size >= 0)
+    // while (size >= 0)
+    // {  
+    //     if(flagman.zero == 1 && second_precount)
+    //     {
+    //         canvas[size - 1] = '0';
+    //         second_precount--;
+    //     }
+    //     else
+    //     {
+    //         canvas[size - 1] = ' ';
+    //     }
+    //     size--;
+    //     printf("%d aftermath %s\n", size, copy_bullet);
+    // }
+    while (size > 0)
     {  
         if(flagman.zero == 1 && second_precount)
         {
@@ -125,7 +140,7 @@ int dfinisher(char *bullet, struct flags flagman)
         }
         size--;
     }
-    
+
     //if(flagman.prec > strlen(zbullet))
     flagman.prec = strlen(copy_bullet);
 
@@ -134,7 +149,6 @@ int dfinisher(char *bullet, struct flags flagman)
         target =  flagman.prec;
         if(hyperkineticpositionreverser == 1)
         target++;
-        
     }
     else
     {
@@ -148,7 +162,7 @@ int dfinisher(char *bullet, struct flags flagman)
     {
         *canvas = '-';
     }
-    
+    // printf("target %d prec %d cb %s\n",target , flagman.prec, copy_bullet);
     while(flagman.prec != 0)
     {
         canvas[target - 1] = copy_bullet[flagman.prec - 1];

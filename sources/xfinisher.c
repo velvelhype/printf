@@ -28,6 +28,7 @@ int xfinisher(char *bullet, struct flags flagman)
 
    if(flagman.prec == 0 && *bullet == '0' && *(bullet + 1) == '\0')
         bullet[strlen(bullet) - 1] = ' ';
+
     if(flagman.prec > bulletsize)
         {
 
@@ -75,7 +76,7 @@ int xfinisher(char *bullet, struct flags flagman)
     sizec = size;
 
     int second_precount = flagman.prec;
-    while (size >= 0)
+    while (size > 0)
     {  
         if(flagman.zero != -1 && second_precount)
         {
