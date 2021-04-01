@@ -1,7 +1,34 @@
 #include "ft_printf.h"
 int main()
 {
-    int t;
+   // int t;
+
+ft_printf("%s%s%s%s%s\n", "1", "2", "3", "4", "5");
+ft_printf("%s%s%s%s%s\n", "1", "2", "3", "4", "5");
+ft_printf("%s%s%s%s%s\n", "1", "2", "3", "4", "5");
+ft_printf("%s%s%s%s%s\n", "1", "2", "3", "4", "5");
+ft_printf("%s%s%s%s%s\n", "1", "2", "3", "4", "5");
+ft_printf("%s%s%s%s%s\n", "1", "2", "3", "4", "5");
+ft_printf("%s%s%s%s%s\n", "1", "2", "3", "4", "5");
+ft_printf("%s%s%s%s%s\n", "1", "2", "3", "4", "5");
+ft_printf("%s%s%s%s%s\n", "1", "2", "3", "4", "5");
+ft_printf("%s%s%s%s%s\n", "1", "2", "3", "4", "5");
+ft_printf("%s%s%s%s%s\n", "1", "2", "3", "4", "5");
+ft_printf("%s%s%s%s%s\n", "1", "2", "3", "4", "5");
+ft_printf("%s%s%s%s%s\n", "1", "2", "3", "4", "5");
+ft_printf("%s%s%s%s%s\n", "1", "2", "3", "4", "5");
+ft_printf("%s%s%s%s%s\n", "1", "2", "3", "4", "5");
+ft_printf("%s%s%s%s%s\n", "1", "2", "3", "4", "5");
+ft_printf("%s%s%s%s%s\n", "1", "2", "3", "4", "5");
+ft_printf("%s%s%s%s%s\n", "1", "2", "3", "4", "5");
+ft_printf("%s%s%s%s%s\n", "1", "2", "3", "4", "5");
+ft_printf("%s%s%s%s%s\n", "1", "2", "3", "4", "5");
+ft_printf("%s%s%s%s%s\n", "1", "2", "3", "4", "5");
+ft_printf("%s%s%s%s%s\n", "1", "2", "3", "4", "5");
+ft_printf("%s%s%s%s%s\n", "1", "2", "3", "4", "5");
+   printf("%s%s%s%s%s\n", "1", "2", "3", "4", "5");
+
+
 
 // ft_printf("{%3c}\n", 0);
 //    printf("{%3c}\n", 0);
@@ -9,8 +36,8 @@ int main()
 //    printf("...%-5c...\n", '\0');
 // ft_printf("%s%s%s%s%s\n", "1", "2", "3", "4", "5");
 //    printf("%s%s%s%s%s\n", "1", "2", "3", "4", "5");
-ft_printf("%.*s\n", -10, "42");
-   printf("%.*s\n", -10, "42");
+// ft_printf("%.*s\n", -10, "42");
+//    printf("%.*s\n", -10, "42");
 
 //    ft_printf("...%5c...\n", 0);
 //       printf("...%5c...\n", 0);
@@ -134,5 +161,5 @@ ft_printf("%.*s\n", -10, "42");
     //     printf("or %.c\n",'a');
     //  ft_printf("ft:%.c\n",'c');
     //     printf("or:%.c\n",'c');
-    // system("leaks a.out");
+    //system("leaks a.out");
 }
