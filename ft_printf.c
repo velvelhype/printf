@@ -89,25 +89,39 @@ int ft_printf(char *fmt, ...)
             {
                 char *unified_bullet;
                 const char loc[3] = "0x";
-                // if(flagman.prec == 0)
-                // {
-                //     bullet = (char*)malloc(sizeof(char) * 1);
-                //     *bullet = '\0';
-                // }
-                // else
-                    bullet = x_con(va_arg(ap, size_t), 'p');
-                // if(*bullet == '0' && *(bullet + 1) == '\0')
-                // {
-                //     free(bullet);
-                //     bullet = (char*)malloc(sizeof(char) * 1);
-                //     *bullet = '\0';
-                // }
-                //printf("bullet%s\n",bullet);
-                unified_bullet = ft_strjoin(loc, bullet);
+                bullet = x_con(va_arg(ap, size_t), 'x');
+                //printf("bullet %s\n",bullet);
+                if(*bullet == '0' && *(bullet + 1) == '\0' && flagman.prec == 0)
+                    unified_bullet = strdup(loc);
+                else
+                    unified_bullet = ft_strjoin(loc, bullet);
                 howmanywewrite += dfinisher(unified_bullet, flagman);
                 free (bullet);
                 free(unified_bullet);
             }
+            // if (*p == 'p')
+            // {
+            //     char *unified_bullet;
+            //     const char loc[3] = "0x";
+            //     // if(flagman.prec == 0)
+            //     // {
+            //     //     bullet = (char*)malloc(sizeof(char) * 1);
+            //     //     *bullet = '\0';
+            //     // }
+            //     // else
+            //         bullet = x_con(va_arg(ap, size_t), 'p');
+            //     // if(*bullet == '0' && *(bullet + 1) == '\0')
+            //     // {
+            //     //     free(bullet);
+            //     //     bullet = (char*)malloc(sizeof(char) * 1);
+            //     //     *bullet = '\0';
+            //     // }
+            //     //printf("bullet%s\n",bullet);
+            //     unified_bullet = ft_strjoin(loc, bullet);
+            //     howmanywewrite += dfinisher(unified_bullet, flagman);
+            //     free (bullet);
+            //     free(unified_bullet);
+            // }
             if (*p == '%')
             {
                 bullet = (char*)malloc(sizeof(char) * 2);

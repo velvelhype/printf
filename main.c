@@ -4,9 +4,12 @@ int main()
     int t;
 
 
-    ft_printf("%3p\n", &t);
-       printf("%3p\n", &t);
-
+    ft_printf("%p\n", NULL);
+       printf("%p\n", NULL);
+    ft_printf("%1.p\n", NULL);
+       printf("%1.p\n", NULL);
+    ft_printf("%5.p\n", NULL);
+       printf("%5.p\n", NULL);
 
 // ft_printf("{%3c}\n", 0);
 //    printf("{%3c}\n", 0);
