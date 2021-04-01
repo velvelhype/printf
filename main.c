@@ -4,8 +4,8 @@ int main()
     int t;
 
 
-    ft_printf("%.p\n", NULL);
-       printf("%.p\n", NULL);
+    ft_printf("%3p\n", &t);
+       printf("%3p\n", &t);
 
 
 // ft_printf("{%3c}\n", 0);
