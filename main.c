@@ -7,8 +7,8 @@ int main()
 //    printf("{%3c}\n", 0);
 // ft_printf("...%-5c...\n", '\0');
 //    printf("...%-5c...\n", '\0');
-ft_printf("%03c\n", 0);
-   printf("%03c\n", 0);
+ft_printf("%*c\n", 0,0);
+   printf("%*c\n", 0,0);
 
 //    ft_printf("...%5c...\n", 0);
 //       printf("...%5c...\n", 0);

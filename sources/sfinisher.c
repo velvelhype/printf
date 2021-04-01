@@ -29,6 +29,9 @@ int sfinisher(struct flags flagman, char *bullet)
     // printf("sizebullet %d\n",sizebullet);
     // printf("\n:flagend:\n");
 
+    if(flagman.prec == -1 && flagman.field < 1 && flagman.type == 'c' && *bullet == 0)
+        flagman.field = 1;
+
     if (flagman.zero == 1 && flagman.minus == 1)
         printf("ERRROR");
 
@@ -101,7 +104,7 @@ int sfinisher(struct flags flagman, char *bullet)
     int howmanywewrite = strlen(canvas);
     if (flagman.type == 'c' && *bullet == 0)
     {
-        if(flagman.minus != 1)
+        if (flagman.minus != 1)
             canvas[strlen(canvas) - 1] = '\0';
         else
             *canvas = '\0';
@@ -110,7 +113,7 @@ int sfinisher(struct flags flagman, char *bullet)
     // if(strlen(canvas) == 0 && flagman.type == 'c')
     //     write(1, null_can, 1);
     // else
-        write(1, canvas, howmanywewrite);
+    write(1, canvas, howmanywewrite);
     free(canvas);
 
     return (sizec);
