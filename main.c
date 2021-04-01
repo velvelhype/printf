@@ -1,11 +1,23 @@
 #include "ft_printf.h"
 int main()
 {
-    int a;
+    int t;
 
 
-ft_printf("%07d\n", -54);
-   printf("%07d\n", -54);
+    ft_printf("%.p\n", NULL);
+       printf("%.p\n", NULL);
+
+
+// ft_printf("{%3c}\n", 0);
+//    printf("{%3c}\n", 0);
+
+// ft_printf("...%5c...\n", '\0');
+//    printf("...%5c...\n", '\0');
+// ft_printf("...%-5c...\n", '\0');
+//    printf("...%-5c...\n", '\0');
+//    printf("two\n");
+//    ft_printf("{%3c}\n", 0);
+//       printf("{%3c}\n", 0);
        
          // ft_printf("..%-5c...\n", '\0');
     //    printf("..%-5c...\n", '\0');

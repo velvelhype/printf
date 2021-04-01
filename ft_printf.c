@@ -40,10 +40,10 @@ int ft_printf(char *fmt, ...)
 
                 if(bullet == NULL)
                 {
-                howmanywewrite += sfinisher(flagman, null);
+                    howmanywewrite += sfinisher(flagman, null);
                 }
                 else
-                howmanywewrite += sfinisher(flagman, bullet);
+                    howmanywewrite += sfinisher(flagman, bullet);
             }
             if (*p == 'd')  
             {
@@ -96,6 +96,12 @@ int ft_printf(char *fmt, ...)
                 }
                 else
                     bullet = x_con(va_arg(ap, size_t), 'p');
+                // if(*bullet == '0' && *(bullet + 1) == '\0')
+                // {
+                //     free(bullet);
+                //     bullet = (char*)malloc(sizeof(char) * 1);
+                //     *bullet = '\0';
+                // }
                 //printf("bullet%s\n",bullet);
                 unified_bullet = ft_strjoin(loc, bullet);
                 howmanywewrite += xfinisher(unified_bullet, flagman);

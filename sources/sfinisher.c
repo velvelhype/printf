@@ -34,8 +34,11 @@ int sfinisher(struct flags flagman, char *bullet)
     //if(flagman.prec == -1 && flagman.field == -1 && flagman.field <= sizebullet)
     // if(flagman.prec > sizebullet && flagman.prec > flagman.field)
     //     flagman.field = flagman.prec;
-    if((flagman.prec == -1 && flagman.field <= sizebullet) || (flagman.prec > sizebullet && flagman.prec > flagman.field && flagman.field != -1))
+    //if((flagman.prec == -1 && flagman.field <= sizebullet) || (flagman.prec > sizebullet && flagman.prec > flagman.field && flagman.field != -1))
+    if((flagman.prec == -1 && flagman.field <= sizebullet) || (flagman.prec > sizebullet && flagman.prec > flagman.field && flagman.field != -1 && sizebullet >= flagman.field))
+    {
         size = strlen(bullet);
+    }
     else if((flagman.field > sizebullet || flagman.prec < flagman.field) && flagman.field != -1)
     {
         size = flagman.field;
@@ -44,8 +47,10 @@ int sfinisher(struct flags flagman, char *bullet)
     {
         size = flagman.prec;
     }
-    if(flagman.type == 'c' && *bullet == '\0')
+    if(flagman.type == 'c' && *bullet == '\0' )
+    {
         size--;
+    }
     if(!(canvas = (char*)malloc(sizeof(char)* size + 1)))
         return -1;
     canvas[size] = '\0';
@@ -81,7 +86,7 @@ int sfinisher(struct flags flagman, char *bullet)
     else
         target = sizec;
     
-    // printf("target %d sbullet %d\n",target, sizebullet);
+    //printf("target %d sbullet %d\n",target, sizebullet);
     while(sizebullet > 0)
     {
         canvas[target - 1] = bullet[sizebullet - 1];
