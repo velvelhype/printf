@@ -21,13 +21,16 @@ int sfinisher(struct flags flagman, char *bullet)
     // printf("minus %d\n",flagman.minus);
     // printf("zero %d\n",flagman.zero);
     // printf("fie %d\n",flagman.field);
-    // printf("prec %d\n",flagman.prec);
+    //printf("prec %d\n",flagman.prec);
     // printf("type %c\n",flagman.type);
     // printf("flagsize %d\n",flagman.flagsize);
     // printf("bullet %s\n",bullet);
     // printf("c %d\n",*bullet);
     // printf("sizebullet %d\n",sizebullet);
     // printf("\n:flagend:\n");
+
+    if(flagman.prec < 0)
+        flagman.prec = -1;
 
     if(flagman.prec == -1 && flagman.field < 1 && flagman.type == 'c' && *bullet == 0)
         flagman.field = 1;
