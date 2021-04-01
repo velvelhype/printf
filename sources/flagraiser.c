@@ -2,7 +2,7 @@
 
 int typefinder(char s)
 {
-    if (s == 'c' || s =='s' || s == 'p' || s == 'd')
+    if (s == 'c' || s == 's' || s == 'p' || s == 'd')
         return s;
     if (s == 'i' || s == 'u' || s == 'x' || s == 'X' || s == '%')
         return s;
@@ -48,11 +48,11 @@ struct flags flagmaker(struct flags flagman, char *fmt, va_list ap)
     else if (*fmt == '*')
     {
         flagman.field = va_arg(ap, int);
-        if(flagman.field < 0)
-            {
-                flagman.field *= -1 ;
-                flagman.minus = 1;
-            }
+        if (flagman.field < 0)
+        {
+            flagman.field *= -1;
+            flagman.minus = 1;
+        }
         fmt++;
     }
     else
@@ -71,10 +71,10 @@ struct flags flagmaker(struct flags flagman, char *fmt, va_list ap)
             flagman.prec = 0;
             digitsize = 0;
             while (typefinder(*(fmt + digitsize)) == 0 && *(fmt + digitsize) != '.')
-                {
-                    flagman.prec = (flagman.prec * 10) + *(fmt + digitsize)  - '0';
-                    digitsize++;
-                }
+            {
+                flagman.prec = (flagman.prec * 10) + *(fmt + digitsize) - '0';
+                digitsize++;
+            }
             while (digitsize > 0)
             {
                 fmt++;
@@ -83,21 +83,9 @@ struct flags flagmaker(struct flags flagman, char *fmt, va_list ap)
         }
     }
     else
-    flagman.prec = -1;
-    
+        flagman.prec = -1;
+
     flagman.type = typefinder(*fmt);
     flagman.flagsize = fmt - opoint;
     return flagman;
 }
-
-// int main()
-// {
-//     struct flags flagman = {-1, -1, 0, 0, -1};
-//     char king[100] = "02329.1234s";
-//     flagman = flagmaker(flagman, king);
-//     printf("%d\n", flagman.minus);
-//     printf("%d\n", flagman.zero);
-//     printf("%d\n", flagman.field);
-//     printf("%d\n", flagman.prec);
-//     printf("%c\n", flagman.type);
-// }
