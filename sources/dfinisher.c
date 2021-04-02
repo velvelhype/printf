@@ -131,6 +131,7 @@ int dfinisher(char *bullet, struct flags flagman)
     if(hyperkineticpositionreverser == 1)
         *canvas = '-';
 
+   //printf("canvas %s\n",canvas);
 
     write(1,canvas,strlen(canvas));
     free(canvas);

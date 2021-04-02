@@ -66,8 +66,10 @@ char *x_con(long d, int flag)
     long amari = 0;
     int len = 0;
     char *slot;
+
+    //printf("bullet  %ld\n",d);
     if(d < 0)
-    {
+    {  
         d = 4294967295 + d;
     }
     len = hexdigit(d);            
@@ -84,5 +86,6 @@ char *x_con(long d, int flag)
         d = d / 16;
         len --;
     }
+    //printf("slot %s\n",slot);
     return slot;
 }
