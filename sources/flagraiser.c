@@ -22,7 +22,7 @@ struct flags flagmaker(struct flags flagman, char *fmt, va_list ap)
     flagman.flagsize = -1;
     opoint = fmt;
 
-    if (*fmt == '-')
+    while (*fmt == '-')
     {
         flagman.minus = 1;
         fmt++;
@@ -33,6 +33,7 @@ struct flags flagmaker(struct flags flagman, char *fmt, va_list ap)
             flagman.zero = 1;
         fmt++;
     }
+
     if ('0' <= *fmt && *fmt <= '9')
     {
         flagman.field = 0;
@@ -48,6 +49,7 @@ struct flags flagmaker(struct flags flagman, char *fmt, va_list ap)
     else if (*fmt == '*')
     {
         flagman.field = va_arg(ap, int);
+        
         if (flagman.field < 0)
         {
             flagman.field *= -1;
@@ -57,6 +59,7 @@ struct flags flagmaker(struct flags flagman, char *fmt, va_list ap)
     }
     else
         flagman.field = -1;
+
 
     if (*fmt == '.')
     {
@@ -87,5 +90,6 @@ struct flags flagmaker(struct flags flagman, char *fmt, va_list ap)
 
     flagman.type = typefinder(*fmt);
     flagman.flagsize = fmt - opoint;
+
     return flagman;
 }
